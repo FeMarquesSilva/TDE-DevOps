@@ -1,7 +1,7 @@
-cd /mnt/c/Faculdade_Integrado/4° Periodo - 2024/DevOps/TDEs
+#!/bin/bash
 
-git clone https://github.com/FeMarquesSilva/TDE-DevOps.git
+# Navegue até o diretório do repositório clonado pelo Jenkins
+cd /path/to/TDE-DevOps
 
-cd TDE-DevOps
-
+# Execute o arquivo main.py com o Flask
 python3 main.py --host=0.0.0.0

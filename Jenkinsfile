@@ -9,10 +9,20 @@ pipeline {
             }
         }
 
+        stage('Instalar Dependências') {
+            steps {
+                // Instalar dependências do Python
+                sh 'pip3 install -r requirements.txt'
+            }
+        }
+
         stage('Executar Script') {
             steps {
-                // Executar o script .sh
-                sh 'automatizador.sh'
+                // Dar permissão de execução ao script, se necessário
+                sh 'chmod +x automatizador.sh'
+                
+                // Executar o script automatizador.sh
+                sh './automatizador.sh'
             }
         }
     }
