@@ -2,19 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Clonar Repositório') {
             steps {
-                echo 'Building..'
+                // Clonar o repositório Git
+                git url: 'https://github.com/FeMarquesSilva/TDE-DevOps', branch: 'main'
             }
         }
-        stage('Test') {
+
+        stage('Executar Script') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                // Executar o script .sh
+                sh 'automatizador.sh'
             }
         }
     }
