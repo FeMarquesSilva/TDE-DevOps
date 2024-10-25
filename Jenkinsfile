@@ -11,19 +11,24 @@ pipeline {
 
         stage('Instalar Dependências') {
             steps {
-                // Instalar dependências do Python
-                sh 'pip3 install -r requirements.txt'
+                // Criar ambiente virtual e instalar dependências
+                sh '''
+                    python3 -m venv venv
+                    source venv/bin/activate
+                    pip install -r requirements.txt
+                '''
             }
         }
 
         stage('Executar Script') {
             steps {
-                // Dar permissão de execução ao script, se necessário
-                sh 'chmod +x automatizador.sh'
-                
-                // Executar o script automatizador.sh
-                sh './automatizador.sh'
+                // Ativar o ambiente virtual e executar o script
+                sh '''
+                    source venv/bin/activate
+                    ./automatizador.sh
+                '''
             }
         }
     }
 }
+
